@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Build started at `date`"
+  build:
+    commands:
+      - mvn package
+  post_build:
+    commands:
+      - echo "Build complete at `date`"
+artifacts:
+  files:
+    - target/myapp.war
+    - appspec.yml
+    - 'scripts/*'
+  discard-paths: no
+cache:
+  paths:
+    - '/root/.m2/**/*'
